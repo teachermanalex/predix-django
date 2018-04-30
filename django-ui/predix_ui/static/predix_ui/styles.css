@@ -42,10 +42,6 @@ body {
   flex-wrap: wrap;
 }
 
-.tile {
-  width: 150px;
-}
-
 .btn {
   padding: 1em;
   width: 10em;
