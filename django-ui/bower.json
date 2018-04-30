@@ -1,0 +1,18 @@
+{
+  "name": "predix_ui",
+  "homepage": "https://github.com/abhishekdhaduvai/django-predix",
+  "authors": [
+    "abhishek.dhaduvai@ge.com"
+  ],
+  "description": "",
+  "license": "MIT",
+  "dependencies": {
+    "px-app-nav": "^2.1.7",
+    "px-spinner": "^2.2.2",
+    "axios": "^0.18.0",
+    "px-gauge": "^2.2.1",
+    "google-map": "^2.0.4",
+    "px-modal": "^3.3.4",
+    "px-key-value-pair": "^2.0.0"
+  }
+}

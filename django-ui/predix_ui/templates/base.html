@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {% load static %}
+  <script src="{%static 'predix_ui//bower_components/webcomponentsjs/webcomponents-loader.js'%}"></script>
+
+  <link rel="import" href="{%static 'predix_ui/bower_components/google-map/google-map.html'%}"/>
+
+  <link rel="import" href="{%static 'predix_ui/bower_components/px-app-nav/px-app-nav.html'%}"/>
+  <link rel="import" href="{%static 'predix_ui/bower_components/px-spinner/px-spinner.html'%}"/>
+  <link rel="import" href="{%static 'predix_ui/bower_components/px-gauge/px-gauge.html'%}"/>
+  <link rel="import" href="{%static 'predix_ui/bower_components/px-modal/px-modal.html'%}"/>
+  <link rel="import" href="{%static 'predix_ui/bower_components/px-key-value-pair/px-key-value-pair.html'%}"/>
+
+  <script src="{%static 'predix_ui/bower_components/axios/dist/axios.min.js'%}"></script>
+
+  {% block head %}
+  <title>Predix Django App</title>
+  {% endblock %}
+</head>
+<body>
+  <!-- <px-app-nav></px-app-nav> -->
+  {% block body %}
+  {% endblock %}
+</body>
+</html>

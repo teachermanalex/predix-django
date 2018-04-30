@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+
+{% block head %}
+  <title>Dashboard</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'predix_ui/styles.css' %}" />
+{% endblock %}
+
+{% block body %}
+  <h1 class="view-heading">Connected Cars Dashboard</h1>
+
+  <google-map
+    id="map"
+    latitude="39.827792"
+    longitude="-98.579304"
+    zoom="4"
+    api-key="AIzaSyCrh3pbRiscHs-1aEOvc1N14I_wtnQKA9g">
+  </google-map>
+
+  <px-modal id="modal">
+    <h2 class="modal-heading" slot="header">Car Details</h2>
+    <div class="modal-body" slot="body">
+      <div class="modal-body">
+        <div class="speedometer">
+          <label>Car Speed</label>
+          <px-gauge class="gauge" id="gauge" value="10"></px-gauge>
+        </div>
+        <div class="tiles">
+          <px-key-value-pair
+            class="tile"
+            id="carMake"
+            label="Car Make"
+            value="N/A"
+            size="gamma">
+          </px-key-value-pair>
+          <px-key-value-pair
+            class="tile"
+            id="carModel"
+            label="Car Model"
+            value="N/A"
+            size="gamma">
+          </px-key-value-pair>
+          <px-key-value-pair
+            class="tile"
+            id="engineTemp"
+            label="Engine Temperature"
+            value="N/A"
+            uom="F"
+            size="gamma">
+          </px-key-value-pair>
+          <px-key-value-pair
+            class="tile"
+            id="miles"
+            label="Odometer"
+            value="N/A"
+            uom="Miles"
+            size="gamma">
+          </px-key-value-pair>
+        </div>
+      </div>
+    </div>
+    <button slot="reject-trigger" class="hidden">Cancel</button>
+    <button slot="accept-trigger" class="btn">OK</button>
+  </px-modal>
+
+  <script>
+
+    var modal = document.getElementById("modal");
+    var map = document.getElementById("map");
+    var gauge = document.getElementById("gauge");
+    var carMake = document.getElementById('carMake');
+    var carModel = document.getElementById('carModel');
+    var interval;
+    var assets;
+
+    axios.get('/asset/assets')
+    .then(res => {
+      assets = res.data;
+      res.data.forEach(car => {
+        var marker = document.createElement('google-map-marker');
+        marker.setAttribute('id', car.uri.split('/')[2]);
+        marker.setAttribute('latitude', car.latitude);
+        marker.setAttribute('longitude', car.longitude);
+        marker.setAttribute('click-events', 'true');
+        marker.addEventListener('google-map-marker-click', showModal);
+        map.appendChild(marker);
+      })
+    })
+    .catch(res => {
+      console.log('err ', err);
+    })
+
+    var showModal = function(e) {
+      getLatestDatapoint(e.target.id);
+      modal.setAttribute('opened', '');
+      let currentCar = assets.filter(asset =>
+        asset.uri.split('/')[2].toUpperCase() === e.target.id.toUpperCase())[0];
+      carMake.setAttribute('value', currentCar.make);
+      carModel.setAttribute('value', currentCar.model);
+      interval = setInterval(function() {
+        getLatestDatapoint(e.target.id)
+      }, 2000);
+    }
+
+    function getLatestDatapoint(tag) {
+      axios.post('/timeseries/latest', {
+        tag: tag.toUpperCase()+'_speed'
+      })
+      .then(res => {
+        let speed = res.data.tags[0].results[0].values[0][1];
+        gauge.setAttribute('value', speed);
+      })
+      .catch(err => {
+        console.log('err ', err);
+      });
+    }
+
+    modal.addEventListener('opened-changed', function(e) {
+      clearInterval(interval);
+    })
+
+  </script>
+{% endblock %}

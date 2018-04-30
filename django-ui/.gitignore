@@ -1,0 +1,8 @@
+ubuntu-xenial-16.04-cloudimg-console.log
+ui/*.pyc
+
+predix_ui/*.pyc
+predix_ui/static/predix_ui/bower_components/
+predix_ui/migrations/
+
+.vscode

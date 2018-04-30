@@ -1,0 +1,8 @@
+predix_project/__pycache__/
+predix_project/*.pyc
+
+predix_api/__pycache__
+predix_api/*.pyc
+predix_api/migrations/
+
+.vscode
