@@ -23,7 +23,7 @@
       <div class="modal-body">
         <div class="speedometer">
           <label>Car Speed</label>
-          <px-gauge class="gauge" id="gauge" value="10"></px-gauge>
+          <px-gauge class="gauge" id="gauge" value="0"></px-gauge>
         </div>
         <div class="tiles">
           <px-key-value-pair
@@ -86,7 +86,7 @@
         map.appendChild(marker);
       })
     })
-    .catch(res => {
+    .catch(err => {
       console.log('err ', err);
     })
 
@@ -104,7 +104,8 @@
 
     function getLatestDatapoint(tag) {
       axios.post('/timeseries/latest', {
-        tag: tag.toUpperCase()+'_speed'
+        tag: tag.toUpperCase()+'_speed',
+        'CSRFToken': getCookie('csrftoken')
       })
       .then(res => {
         let speed = res.data.tags[0].results[0].values[0][1];
@@ -113,6 +114,21 @@
       .catch(err => {
         console.log('err ', err);
       });
+    }
+
+    function getCookie(name) {
+      var cookieValue = null;
+      if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+          var cookie = cookies[i].trim();
+          if (cookie.substring(0, name.length + 1) === (name + '=')) {
+            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+            break;
+          }
+        }
+      }
+      return cookieValue;
     }
 
     modal.addEventListener('opened-changed', function(e) {

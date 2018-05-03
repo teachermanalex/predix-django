@@ -25,21 +25,30 @@ SECRET_KEY = '7mo1k_mcw&sbwva)q@r@6^p=r^8rr1+dkcqmmdwqshm*ga5$2w'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['localhost']
+# SESSION_COOKIE_SECURE = True
+# SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 # Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'predix_ui',
     'rest_framework',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'uaa',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -70,6 +79,19 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'ui.wsgi.application'
+
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+    )
+}
 
 
 # Database
@@ -115,8 +137,13 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# ACCOUNT_ADAPTER = 'predix_ui.auth.account_adapter.NoNewUsersAccountAdapter'
+
+LOGIN_REDIRECT_URL = '/cars/'
+ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login'
+UAA_URL = 'https://ec147fcf-cb35-408a-af01-ce4a359388fd.predix-uaa.run.aws-usw02-pr.ice.predix.io'

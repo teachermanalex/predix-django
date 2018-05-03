@@ -6,4 +6,7 @@ predix_ui/myViews/*.pyc
 predix_ui/static/predix_ui/bower_components/
 predix_ui/migrations/
 
+*/__pycache__/
+predix_ui/*/__pycache__/
+
 .vscode

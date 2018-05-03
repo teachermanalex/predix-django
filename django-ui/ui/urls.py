@@ -16,8 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.conf.urls import url, include
 
+
 urlpatterns = [
-    url('admin/', admin.site.urls),
+    url(r'^admin/', admin.site.urls),
+    url(r'^accounts/', include('allauth.urls')),
     url(r'^cars/', include('predix_ui.urls')),
     url(r'^timeseries/', include('predix_ui.urls')),
     url(r'^asset/', include('predix_ui.urls')),

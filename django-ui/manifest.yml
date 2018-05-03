@@ -1,6 +1,6 @@
 ---
 applications:
-  - name: python-data-handler
+  - name: django-ui
     memory: 256M
     buildpack: https://github.com/cloudfoundry/python-buildpack.git
     path: .
@@ -8,6 +8,7 @@ applications:
 services:
  - training-uaa
  - training-ts
+ - test-asset
 env:
     PREDIXPY_VERSION: 1.0.0rc1
     DISABLE_COLLECTSTATIC: 1

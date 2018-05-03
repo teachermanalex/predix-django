@@ -1,12 +1,16 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-
+# Decorators for APIs
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+# Predix Python SDK
 import predix.admin.app
-
+# Generic
 import os
 from pprint import pprint
 
+@method_decorator(login_required(login_url='/accounts/predix/login/'), name='dispatch')
 class AssetView(APIView):
   def get(self, requests):
     if 'VCAP_SERVICES' in os.environ:

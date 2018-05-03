@@ -1,14 +1,19 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-
+# Decorators for APIs
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+# Predix Python SDK
 import predix.admin.app
 import predix.data.timeseries
-
+# Generic
 import os
 from pprint import pprint
+# User defined
 from predix_ui import serializers
 
+@method_decorator(login_required(login_url='/accounts/predix/login/'), name='dispatch')
 class TimeseriesView(APIView):
   def post(self, request):
     # If VCAP_SERVICES exist, use that to load Time Series
