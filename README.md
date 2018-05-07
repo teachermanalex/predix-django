@@ -10,6 +10,7 @@ You can see what we're installing in the Vagrantfile.
 * Once the machine starts, log in to it by running ```vagrant ssh```
 * Although not necessary, it's a good practice to create a virtual environment for every project so that your package versions don't clash.
 * To create a new python virtual env, run ```mkvirtualenv <your-virtual-env-name>```
+* To list your virtual envs, run ```lsvirtualenv```
 * To start working in the virtual env, run ```workon <your-virtual-env-name>```.
 
     * The virtual env you are working on will be displayed before the prompt like this.
