@@ -91,21 +91,24 @@
     })
 
     var showModal = function(e) {
-      getLatestDatapoint(e.target.id);
+      var id = e.target.id;
       modal.setAttribute('opened', '');
       let currentCar = assets.filter(asset =>
-        asset.uri.split('/')[2].toUpperCase() === e.target.id.toUpperCase())[0];
+        asset.uri.split('/')[2].toUpperCase() === id.toUpperCase())[0];
+
       carMake.setAttribute('value', currentCar.make);
       carModel.setAttribute('value', currentCar.model);
+
+      getLatestDatapoint(id);
+
       interval = setInterval(function() {
-        getLatestDatapoint(e.target.id)
+        getLatestDatapoint(id);
       }, 2000);
     }
 
     function getLatestDatapoint(tag) {
       axios.post('/timeseries/latest', {
-        tag: tag.toUpperCase()+'_speed',
-        'CSRFToken': getCookie('csrftoken')
+        tag: tag.toUpperCase()+'_speed'
       })
       .then(res => {
         let speed = res.data.tags[0].results[0].values[0][1];

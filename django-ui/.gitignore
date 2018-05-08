@@ -11,4 +11,6 @@ uaa/*.pyc
 */__pycache__/
 predix_ui/*/__pycache__/
 
+db.sqlite3
+
 .vscode
