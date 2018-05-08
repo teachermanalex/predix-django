@@ -23,7 +23,7 @@ All of the application’s dependencies have been added to the requirements.txt 
 ## Install Dependencies
 Install the app's dependencies by running the following commands
 
-```pip install -r requirements.txt```
+```pip3 install -r requirements.txt```
 
 ```bower install```
 

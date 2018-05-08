@@ -4,13 +4,13 @@ Clone this repository and change directory to timeseries-microservice.
 
 ## Installing dependencies
 
-Run ```pip install -r requirements.txt``` to install the application's dependencies.
+Run ```pip3 install -r requirements.txt``` to install the application's dependencies.
 
 ## Running locally
 
 Update the ```manifest.yml``` file with your services' metadata.
 
-Run ```python manage.py runserver``` to start a local server.
+Run ```python3 manage.py runserver``` to start a local server.
 
 ## Pushing to the cloud
 
@@ -114,7 +114,7 @@ GET /cars/simulator
 
 **END NOTE**
 
-Install the app's dependencies by running ```pip install -r requirements.txt```.
+Install the app's dependencies by running ```pip3 install -r requirements.txt```.
 
 ### Update the manifest file
 

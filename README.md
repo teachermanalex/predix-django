@@ -1,6 +1,8 @@
 # Setting up your environment
 
-Before you begin, download VirtualBox from <a href="https://www.virtualbox.org/wiki/Downloads">here</a>.
+Before you begin, 
+download VirtualBox from <a href="https://www.virtualbox.org/wiki/Downloads">here</a>, and
+download Vagrant from <a href="https://www.vagrantup.com/downloads.html">here</a>.
 
 * Clone this repo and cd into the directory. Run ```cd django-predix```
 * Run ```vagrant up```. This will create a Virtual Machine with the tools you will need to run this application.
@@ -8,6 +10,7 @@ You can see what we're installing in the Vagrantfile.
 * Once the machine starts, log in to it by running ```vagrant ssh```
 * Although not necessary, it's a good practice to create a virtual environment for every project so that your package versions don't clash.
 * To create a new python virtual env, run ```mkvirtualenv <your-virtual-env-name>```
+* To list your virtual envs, run ```lsvirtualenv```
 * To start working in the virtual env, run ```workon <your-virtual-env-name>```.
 
     * The virtual env you are working on will be displayed before the prompt like this.
