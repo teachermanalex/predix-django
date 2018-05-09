@@ -25,7 +25,7 @@ SECRET_KEY = '7mo1k_mcw&sbwva)q@r@6^p=r^8rr1+dkcqmmdwqshm*ga5$2w'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['*']
 # SESSION_COOKIE_SECURE = True
 # SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
@@ -144,6 +144,6 @@ STATIC_URL = '/static/'
 
 # ACCOUNT_ADAPTER = 'predix_ui.auth.account_adapter.NoNewUsersAccountAdapter'
 
-LOGIN_REDIRECT_URL = '/cars/'
+LOGIN_REDIRECT_URL = '/'
 ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login'
 UAA_URL = 'https://ec147fcf-cb35-408a-af01-ce4a359388fd.predix-uaa.run.aws-usw02-pr.ice.predix.io'

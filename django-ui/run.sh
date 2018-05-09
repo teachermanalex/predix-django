@@ -4,9 +4,9 @@ if [ -z “$VCAP_APP_PORT” ];
    else SERVER_PORT=$VCAP_APP_PORT;
 fi
 echo port is $SERVER_PORT
-echo “make migrations”
+echo "make migrations"
 python manage.py makemigrations
-echo “migrate”
+echo "migrate"
 python manage.py migrate
 echo [$0] Starting Django Server…
 python manage.py runserver 0.0.0.0:$SERVER_PORT

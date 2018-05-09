@@ -4,15 +4,19 @@ from rest_framework import status
 # Decorators for APIs
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from allauth.socialaccount.models import SocialToken
 # Predix Python SDK
 import predix.admin.app
 # Generic
 import os
+# import request
 from pprint import pprint
 
 @method_decorator(login_required(login_url='/accounts/predix/login/'), name='dispatch')
 class AssetView(APIView):
   def get(self, requests):
+    # access_token = SocialToken.objects.get(account__user=request.user, account__provider='predix')
+    # pprint(access_token)
     if 'VCAP_SERVICES' in os.environ:
       asset = predix.data.asset.Asset()
     else:

@@ -5,4 +5,6 @@ predix_api/__pycache__
 predix_api/*.pyc
 predix_api/migrations/
 
+db.sqlite3
+
 .vscode

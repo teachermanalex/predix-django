@@ -1,6 +1,6 @@
 ---
 applications:
-  - name: django-ui
+  - name: abhi-django-ui
     memory: 256M
     buildpack: https://github.com/cloudfoundry/python-buildpack.git
     path: .
