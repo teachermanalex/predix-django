@@ -13,6 +13,7 @@
     "px-gauge": "^2.2.1",
     "google-map": "^2.0.4",
     "px-modal": "^3.3.4",
-    "px-key-value-pair": "^2.0.0"
+    "px-key-value-pair": "^2.0.0",
+    "px-branding-bar": "^1.1.2"
   }
 }

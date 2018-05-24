@@ -143,7 +143,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # ACCOUNT_ADAPTER = 'predix_ui.auth.account_adapter.NoNewUsersAccountAdapter'
-
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'
 LOGIN_REDIRECT_URL = '/'
 ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login'
 UAA_URL = 'https://ec147fcf-cb35-408a-af01-ce4a359388fd.predix-uaa.run.aws-usw02-pr.ice.predix.io'

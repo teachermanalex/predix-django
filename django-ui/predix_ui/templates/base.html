@@ -11,6 +11,7 @@
   <link rel="import" href="{%static 'predix_ui/bower_components/px-gauge/px-gauge.html'%}"/>
   <link rel="import" href="{%static 'predix_ui/bower_components/px-modal/px-modal.html'%}"/>
   <link rel="import" href="{%static 'predix_ui/bower_components/px-key-value-pair/px-key-value-pair.html'%}"/>
+  <link rel="import" href="{%static 'predix_ui/bower_components/px-branding-bar/px-branding-bar.html'%}"/>
 
   <script src="{%static 'predix_ui/bower_components/axios/dist/axios.min.js'%}"></script>
 
@@ -19,10 +20,12 @@
   {% endblock %}
 </head>
 <body>
-  <!-- <px-app-nav></px-app-nav> -->
-  {% block body %}
-    {% block content %}
-    {% endblock content %}
-  {% endblock body %}
+  <px-branding-bar></px-branding-bar>
+  <div class="container">
+    {% block body %}
+      {% block content %}
+      {% endblock content %}
+    {% endblock body %}
+  </div>
 </body>
 </html>

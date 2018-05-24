@@ -8,8 +8,12 @@ px-modal {
 
 body {
   margin: 0;
-  padding: 1em;
+  padding: 0;
   background: #24343e;
+}
+
+.container {
+  padding: 1em;
 }
 
 .view-heading {
