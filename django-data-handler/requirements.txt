@@ -1,5 +1,5 @@
 Django==1.11
-django-allauth==0.20.0
+django-allauth==0.32.0
 djangorestframework==3.6.2
 pprint==0.1
 predix==1.0.0
