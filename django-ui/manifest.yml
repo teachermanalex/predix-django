@@ -20,5 +20,5 @@ env:
     PREDIX_DATA_TIMESERIES_QUERY_ZONE_ID: {your Timeseries Zone ID}
     PREDIX_DATA_ASSET_URI: https://predix-asset.run.aws-usw02-pr.ice.predix.io
     PREDIX_DATA_ASSET_ZONE_ID: {your Asset Zone ID}
-    PREDIX_SECURITY_UAA_URI: {your UAA URI, starting with https and ending in predix.io}
+    PREDIX_SECURITY_UAA_URI: {your UAA URI, starting with https:// and ending in predix.io}
     SIMULATOR_API: https://{yourname}-connectedcars-simulator.run.aws-usw02-pr.ice.predix.io
